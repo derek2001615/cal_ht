@@ -31,11 +31,32 @@ class LouverFinRoundTube:
         self.calc_areas()
         self._calc_reynolds_numbers()
         self._calc_D_h()
+        
+        self._calc_J1()
+        self._calc_J2()
+        self._calc_J3()
+        self._calc_J4()
+        self._calc_J5()
+        self._calc_J6()
+        self._calc_J7()
+        self._calc_J8()
         self._calc_colburn_j_factor()
+
+        self._calc_F1()
+        self._calc_F2()
+        self._calc_F3()
+        self._calc_F4()
+        self._calc_F5()
+        self._calc_F6()
+        self._calc_F7()
+        self._calc_F8()
+        self._calc_F9()
         self._calc_fanning_friction_factor()
+
         self.calc_pressure_drop()
         self.calc_heat_transfer_coefficient()
         self.calc_efficiency()
+
 
     '''
     #fin parameters
@@ -222,7 +243,7 @@ class LouverFinRoundTube:
     def calc_efficiency(self):
         m = np.sqrt(2 * self.h_air / (self.k_f * self.delta_f))
         self.r = self.D_c / 2
-        self.X_L = self.P_L / 2
+        self.X_L = self.P_l / 2
         self.X_M = np.sqrt((self.P_t / 2)**2 + self.P_l**2) / 2
 
         #inline layout or 1-row coil
