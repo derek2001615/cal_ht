@@ -11,8 +11,8 @@ def get_data():
         'L_p':0.002,
         'P_l':0.022,
         'P_t':0.0254,
-        'density_air':1.,
-        'velocity_air':1, #fix
+        'density_air':1.225,
+        'velocity_air':0.0925, 
         'viscosity_air':1.887*10**(-5),
         'Cp_air':1007,
         'Pr_air':0.71,
