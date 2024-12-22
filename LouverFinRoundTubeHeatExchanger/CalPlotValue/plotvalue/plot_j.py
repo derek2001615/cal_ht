@@ -2,10 +2,12 @@ import sys
 import os
 sys.path.append(r"C:\Users\derek\Desktop\pythoncode\cal_ht\LouverFinRoundTubeHeatExchanger\CalPlotValue\calvalue")
 
-from cal_value import calculate_Re_DC_values as Re_DC
-from cal_value import calculate_colburn_j_factor_values001 as j1
-from cal_value import calculate_colburn_j_factor_values002 as j2
-from cal_value import calculate_colburn_j_factor_values003 as j3
+import numpy as np
+
+from cal_value_F_p import calculate_Re_DC_values as Re_DC
+from cal_value_F_p import calculate_colburn_j_factor_values001 as j1
+from cal_value_F_p import calculate_colburn_j_factor_values002 as j2
+from cal_value_F_p import calculate_colburn_j_factor_values003 as j3
 
 
 import plotly.graph_objects as go
@@ -14,6 +16,8 @@ Re_DC_values = Re_DC()
 j1_values = j1()
 j2_values = j2()
 j3_values = j3()
+
+Re_DC_values = np.insert(Re_DC_values, 35, None)
 
 fig1 = go.Figure()
 

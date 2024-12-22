@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Louver fin with round tube &#8212; LouverFinRoundTube 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src" href="modules.html" />
+    <link rel="prev" title="LouverFinRoundTube documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="louver-fin-with-round-tube">
+<h1>Louver fin with round tube<a class="headerlink" href="#louver-fin-with-round-tube" title="Link to this heading">¶</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>The package calculates different features of Louver fin with round tube heat exchanger</p>
+<section id="louver-fin-with-a-flat-tube">
+<h3>Louver fin with a flat tube<a class="headerlink" href="#louver-fin-with-a-flat-tube" title="Link to this heading">¶</a></h3>
+<img src="_static/html/LFRTHEdef1.JPG" alt="Description of the image" width="100%" height="auto">
+<p><em>Figure 1:Typical louver fin geometry with round tube configuration <a href="https://www.sciencedirect.com/science/article/pii/S0017931098003020">C.-C. Wang</a></em></p></section>
+</section>
+<hr class="docutils" />
+<section id="correlations">
+<h2>Correlations<a class="headerlink" href="#correlations" title="Link to this heading">¶</a></h2>
+</section>
+<section id="j-colburn-factor">
+<h2>J Colburn factor<a class="headerlink" href="#j-colburn-factor" title="Link to this heading">¶</a></h2>
+<p>The J-factor provides a way to relate heat, mass, and momentum transfer processes. This allows to estimate one transfer coefficient.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+j = \begin{cases}
+14.3117 \cdot Re_{DC}^{J1} \cdot \left(\frac{F_p}{D_c}\right)^{J2}
+\cdot \left(\frac{L_h}{L_p}\right)^{J3} \cdot \left(\frac{F_p}{P_l}\right)^{J4}
+\cdot \left(\frac{P_l}{P_t}\right)^{-1.724} &amp; \text{if } Re_{DC} &lt; 1000 \\
+1.1373 \cdot Re_{DC}^{J5} \cdot \left(\frac{F_p}{P_l}\right)^{J6}
+\cdot \left(\frac{L_h}{L_p}\right)^{J7} \cdot \left(\frac{P_l}{P_t}\right)^{J8}
+\cdot N^{0.3545} &amp; \text{if } Re_{DC} \geq 1000
+\end{cases}
+\end{equation}\end{split}\]</div>
+</section>
+<section id="f-friction-factor">
+<h2>F friction factor<a class="headerlink" href="#f-friction-factor" title="Link to this heading">¶</a></h2>
+<p>The friction factor in heat exchanger fins is a dimensionless parameter that quantifies the resistance to fluid flow through the finned passages.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+f = \begin{cases}
+0.00317 \cdot Re_{DC}^{F1} \cdot \left(\frac{F_p}{P_l}\right)^{F2}
+\cdot \left(\frac{D_h}{D_c}\right)^{F3} \cdot \left(\frac{L_h}{L_p}\right)^{F4}
+\cdot \left(\ln\left(\frac{A_o}{A_t}\right)\right)^{-6.0483} &amp; \text{if } N = 1 \\
+0.06393 \cdot Re_{DC}^{F5} \cdot \left(\frac{F_p}{D_c}\right)^{F6}
+\cdot \left(\frac{D_h}{D_c}\right)^{F7} \cdot \left(\frac{L_h}{L_p}\right)^{F8}
+\cdot N^{F9} \cdot \left(\ln(Re_{DC}) - 4\right)^{-1.093} &amp; \text{if } N &gt; 1
+\end{cases}
+\end{equation}\end{split}\]</div>
+</section>
+<section id="h-air-heat-transfer-coefficient">
+<h2>h_air heat transfer coefficient<a class="headerlink" href="#h-air-heat-transfer-coefficient" title="Link to this heading">¶</a></h2>
+<p>It quantifies the rate of heat transfer between a solid surface (like a fin) and a surrounding fluid.</p>
+<div class="math notranslate nohighlight">
+\[h_{air} = j \cdot \rho_{air} \cdot \left(\frac{v_{air}}{\sigma}\right) \cdot C_{p_{air}} \cdot \left(Pr_{air}\right)^{-\frac{2}{3}}\]</div>
+</section>
+<section id="pressure-drop">
+<h2>Pressure drop<a class="headerlink" href="#pressure-drop" title="Link to this heading">¶</a></h2>
+<p>Reduction in pressure of the fluid as it flows through the heat exchanger due to the resistance to flow caused by the fins.</p>
+<div class="math notranslate nohighlight">
+\[\Delta P = \rho_{air} \cdot f \cdot \frac{A_o}{A_c} \cdot 0.5 \cdot \left(\frac{v_{air}}{\sigma}\right)^2\]</div>
+</section>
+<section id="fin-and-tube-louver-surface-efficiency">
+<h2>Fin-and-tube louver surface efficiency<a class="headerlink" href="#fin-and-tube-louver-surface-efficiency" title="Link to this heading">¶</a></h2>
+<p>Measure of how effectively a louver system can transfer heat between two fluids.</p>
+<p><span class="math notranslate nohighlight">\(m = \sqrt{\frac{2 h_air}{k \delta}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta = \frac{\tanh(m r \varphi)}{m r \varphi}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta_{overall} = 1 - \left(\frac{A_{fin}}{A_{total}}\right) (1 - \eta)\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
+<p>For the instance it is necessary to provide these values:</p>
+<img src="_static/html/LFRTHEdef2.JPG" alt="Description of the image" width="100%" height="auto">
+
+<img src="_static/html/LFRTHEdef3.JPG" alt="Description of the image" width="100%" height="auto">
+
+<img src="_static/html/LFRTHEdef4.JPG" alt="Description of the image" width="100%" height="auto"><p>Fin parameters:</p>
+<ul class="simple">
+<li><p>D_c: fin collar outside diameter (m)</p></li>
+<li><p>delta_f(=t in graph): fin thickness (m)</p></li>
+<li><p>F_p: fin pitch (m)</p></li>
+<li><p>k_f: thermal conductivity of fin (W/(m*K))</p></li>
+</ul>
+<p>Louver parameters:</p>
+<ul class="simple">
+<li><p>L_h: louver height (m)</p></li>
+<li><p>L_p: major louver pitch (m)</p></li>
+</ul>
+<p>Tube parameters:</p>
+<ul class="simple">
+<li><p>P_l: longitudinal tube pitch (m)</p></li>
+<li><p>P_t: transverse tube pitch (m)</p></li>
+</ul>
+<p>Air parameters:</p>
+<ul class="simple">
+<li><p>density_air: density of air (kg/m^3)</p></li>
+<li><p>velocity_air: velocity of air (m/s)</p></li>
+<li><p>viscosity_air: viscosity of air (kg/(m*s))</p></li>
+<li><p>Cp_air: specific heat at constant pressure of air (W/(kg*K))</p></li>
+<li><p>Pr_air: Prandtl number of air (dimensionless)</p></li>
+</ul>
+<p>Heat exchanger parameters:</p>
+<ul class="simple">
+<li><p>HtEx_height: height of heat exchanger (m)</p></li>
+<li><p>HtEx_width: width of heat exchanger (m)</p></li>
+<li><p>N: number of longitudinal tube rows (dimensionless)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
+</section>
+<section id="input">
+<h2>Input<a class="headerlink" href="#input" title="Link to this heading">¶</a></h2>
+<p>Data provided by the user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cal</span> <span class="kn">import</span> <span class="n">LouverFinRoundTube</span> <span class="k">as</span> <span class="n">cal</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
+<span class="k">return</span><span class="p">{</span>
+     <span class="s1">&#39;D_c&#39;</span><span class="p">:</span><span class="mf">0.01034</span><span class="p">,</span>
+     <span class="s1">&#39;delta_f&#39;</span><span class="p">:</span><span class="mf">0.00012</span><span class="p">,</span>
+     <span class="s1">&#39;F_p&#39;</span><span class="p">:</span><span class="mf">0.0015</span><span class="p">,</span>
+     <span class="s1">&#39;k_f&#39;</span><span class="p">:</span><span class="mi">204</span><span class="p">,</span>
+     <span class="s1">&#39;L_h&#39;</span><span class="p">:</span><span class="mf">0.00107</span><span class="p">,</span>
+     <span class="s1">&#39;L_p&#39;</span><span class="p">:</span><span class="mf">0.002</span><span class="p">,</span>
+     <span class="s1">&#39;P_l&#39;</span><span class="p">:</span><span class="mf">0.022</span><span class="p">,</span>
+     <span class="s1">&#39;P_t&#39;</span><span class="p">:</span><span class="mf">0.0254</span><span class="p">,</span>
+     <span class="s1">&#39;density_air&#39;</span><span class="p">:</span><span class="mf">1.225</span><span class="p">,</span>
+     <span class="s1">&#39;velocity_air&#39;</span><span class="p">:</span><span class="mf">0.0925</span><span class="p">,</span>
+     <span class="s1">&#39;viscosity_air&#39;</span><span class="p">:</span><span class="mf">1.887</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span>
+     <span class="s1">&#39;Cp_air&#39;</span><span class="p">:</span><span class="mi">1007</span><span class="p">,</span>
+     <span class="s1">&#39;Pr_air&#39;</span><span class="p">:</span><span class="mf">0.71</span><span class="p">,</span>
+     <span class="s1">&#39;HtEx_height&#39;</span><span class="p">:</span><span class="mf">0.355</span><span class="p">,</span>
+     <span class="s1">&#39;HtEx_width&#39;</span><span class="p">:</span><span class="mf">0.595</span><span class="p">,</span>
+     <span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="call-the-function">
+<h2>Call the function<a class="headerlink" href="#call-the-function" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+<span class="n">caldata</span> <span class="o">=</span> <span class="n">cal</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Re_DC:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">Re_DC</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fanning friction factor:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Colburn j-factor:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">j</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pressure drop:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">delta_P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Heat transfer coefficient h_o:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">h_air</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;efficiency:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">eta_o</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">¶</a></h2>
+<p>Results obtained from the calculations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Results</span>
+<span class="n">Re_DC</span><span class="p">:</span> <span class="mf">100.05202671182407</span>
+<span class="n">Fanning</span> <span class="n">friction</span> <span class="n">factor</span><span class="p">:</span> <span class="mf">1.6476016678787477</span>
+<span class="n">Colburn</span> <span class="n">j</span><span class="o">-</span><span class="n">factor</span><span class="p">:</span> <span class="mf">0.05148511118448749</span>
+<span class="n">Pressure</span> <span class="n">drop</span><span class="p">:</span> <span class="mf">0.9557613545778805</span>
+<span class="n">Heat</span> <span class="n">transfer</span> <span class="n">coefficient</span> <span class="n">h_o</span><span class="p">:</span> <span class="mf">11.894590038782678</span>
+<span class="n">efficiency</span><span class="p">:</span> <span class="mf">0.9655369378815283</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="graphs">
+<h2>Graphs<a class="headerlink" href="#graphs" title="Link to this heading">¶</a></h2>
+<p>The following graphs show the variation of the  friction factor, J Colburn factor, pressure drop, and heat transfer coefficient respect to Reynolds number and other parameters.</p>
+<iframe src="_static/graph/plot_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe></section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LouverFinRoundTube</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Louver fin with round tube</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#correlations">Correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#j-colburn-factor">J Colburn factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#f-friction-factor">F friction factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#h-air-heat-transfer-coefficient">h_air heat transfer coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pressure-drop">Pressure drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fin-and-tube-louver-surface-efficiency">Fin-and-tube louver surface efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#call-the-function">Call the function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphs">Graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">LouverFinRoundTube documentation</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">src</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Derek.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/help_LFRT.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

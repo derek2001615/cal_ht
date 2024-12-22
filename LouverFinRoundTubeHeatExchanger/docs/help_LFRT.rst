@@ -13,8 +13,8 @@ Louver fin with a flat tube
 
 .. raw:: html
      
-     <img src="./img/LF.jpg" alt="Description of the image" width="100%" height="auto">
-     <p><em>Figure 1: Schematic of a Louver fin with a flat tube <a href="https://www.sciencedirect.com/science/article/pii/0017931096001160">Y.J. Chang, C.C. Wang</a></em></p>
+     <img src="_static/html/LFRTHEdef1.JPG" alt="Description of the image" width="100%" height="auto">
+     <p><em>Figure 1:Typical louver fin geometry with round tube configuration <a href="https://www.sciencedirect.com/science/article/pii/S0017931098003020">C.-C. Wang</a></em></p>
 
 ------------------------------------------------
 
@@ -28,9 +28,18 @@ J Colburn factor
 
 The J-factor provides a way to relate heat, mass, and momentum transfer processes. This allows to estimate one transfer coefficient. 
 
-:math:`j = Re_{Lp}^{-0.49} \left( \frac{\theta}{90} \right)^{0.27} \left( \frac{F_p}{L_p} \right)^{-0.14} \left( \frac{F_l}{L_p} \right)^{-0.29} \left( \frac{T_d}{L_p} \right)^{-0.23} \\
-\left( \frac{L_1}{L_p} \right)^{0.68} \left( \frac{T_p}{L_p} \right)^{-0.28} \left( \frac{\delta_f}{L_p} \right)^{-0.05}` 
+.. math::
 
+    \begin{equation}
+    j = \begin{cases}
+    14.3117 \cdot Re_{DC}^{J1} \cdot \left(\frac{F_p}{D_c}\right)^{J2} 
+    \cdot \left(\frac{L_h}{L_p}\right)^{J3} \cdot \left(\frac{F_p}{P_l}\right)^{J4} 
+    \cdot \left(\frac{P_l}{P_t}\right)^{-1.724} & \text{if } Re_{DC} < 1000 \\
+    1.1373 \cdot Re_{DC}^{J5} \cdot \left(\frac{F_p}{P_l}\right)^{J6} 
+    \cdot \left(\frac{L_h}{L_p}\right)^{J7} \cdot \left(\frac{P_l}{P_t}\right)^{J8} 
+    \cdot N^{0.3545} & \text{if } Re_{DC} \geq 1000
+    \end{cases}
+    \end{equation} 
 
 F friction factor
 -----------------
@@ -38,54 +47,45 @@ F friction factor
 The friction factor in heat exchanger fins is a dimensionless parameter that quantifies the resistance to fluid flow through the finned passages. 
 
 
-:math:`f=f_{1}f_{2}f_{3}`
+.. math::
 
-:math:`\begin{equation}
-f_1 = \begin{cases}
-14.39 Re_{Lp}^{-0.805 \left( \frac{F_P}{F_l} \right)} \log_{e}\left( 1.0 + \left( \frac{F_p}{L_p} \right)\right)^{3.04} & Re_{Lp} < 150 \\
-4.97 Re_{Lp}^{0.6049 - 1.064 / \theta^2} \log_{e} \left( \left( \frac{F_t}{F_p} \right)^{0.5} + 0.9 \right)^{ - 0.527} & 150 < Re_{Lp} < 5,000
-\end{cases}
-\end{equation}`
+    \begin{equation}
+    f = \begin{cases}
+    0.00317 \cdot Re_{DC}^{F1} \cdot \left(\frac{F_p}{P_l}\right)^{F2} 
+    \cdot \left(\frac{D_h}{D_c}\right)^{F3} \cdot \left(\frac{L_h}{L_p}\right)^{F4} 
+    \cdot \left(\ln\left(\frac{A_o}{A_t}\right)\right)^{-6.0483} & \text{if } N = 1 \\
+    0.06393 \cdot Re_{DC}^{F5} \cdot \left(\frac{F_p}{D_c}\right)^{F6} 
+    \cdot \left(\frac{D_h}{D_c}\right)^{F7} \cdot \left(\frac{L_h}{L_p}\right)^{F8} 
+    \cdot N^{F9} \cdot \left(\ln(Re_{DC}) - 4\right)^{-1.093} & \text{if } N > 1
+    \end{cases}
+    \end{equation}
 
-:math:`\begin{equation}
-f_2 = \begin{cases}
-\left( \log_{e} \left( \left( \frac{F_l}{F_p} \right)^{0.48} + 0.9 \right) \right) ^{- 1.435}  \left( \frac{D_h}{L_p} \right)^{-3.01} \log_{e} \left( 0.5 Re_{Lp} \right)^{-3.01} & Re_{Lp} < 150 \\
-\left( \left( \frac{D_h}{L_p} \right) \log_{e} \left( 0.3 Re_{Lp} \right)\right) ^ {- 2.966} \left( \frac{F_p}{L_1} \right)^ { - 0.7931 \left( {T_p}/{T_h} \right)} & 150 < Re_{Lp} < 5,000
-\end{cases}
-\end{equation}`
-
-:math:`\begin{equation}
-f_3 = \begin{cases}
-\left( \frac{F_p}{L_l} \right)^{-0.308} \left( \frac{F_d}{L_l} \right)^{-0.308} \left( e^{-0.1167 \frac{T_p}{D_m}} \right) \theta ^{0.35} & Re_{Lp} < 150 \\
-\left( \frac{T_p}{D_m} \right)^{-0.0446} \log_{e} \left( 1.2 + \left( \frac{L_p}{F_p} \right)^{1.4} \right)^{-3.553} \theta ^{-0.477}  & 150 < Re_{Lp} < 5,000
-\end{cases}
-\end{equation}`
-
-
-Hc heat transfer coefficient
+h_air heat transfer coefficient
 ----------------------------
 
 It quantifies the rate of heat transfer between a solid surface (like a fin) and a surrounding fluid.
 
-:math:`Hc = \frac{ J \rho V C_{p} }{P_{r}^{2/3} \sigma }`
+.. math::
+
+    h_{air} = j \cdot \rho_{air} \cdot \left(\frac{v_{air}}{\sigma}\right) \cdot C_{p_{air}} \cdot \left(Pr_{air}\right)^{-\frac{2}{3}}
 
 Pressure drop
 ----------------
 
 Reduction in pressure of the fluid as it flows through the heat exchanger due to the resistance to flow caused by the fins. 
 
-:math:`P = 0.5 \frac{ 4 f \rho F_{d}}{D_{h} } \left(\frac{V}{ \sigma}\right ) ^{2}`
+.. math::
+
+    \Delta P = \rho_{air} \cdot f \cdot \frac{A_o}{A_c} \cdot 0.5 \cdot \left(\frac{v_{air}}{\sigma}\right)^2
 
 Fin-and-tube louver surface efficiency
 ----------------------------------------
   
 Measure of how effectively a louver system can transfer heat between two fluids.
 
-
-  
-:math:`m = \sqrt{\frac{2 h_c}{k \delta}}`
+:math:`m = \sqrt{\frac{2 h_air}{k \delta}}`
         
-:math:`\eta = \frac{\tanh(m F_l)}{m F_l}`
+:math:`\eta = \frac{\tanh(m r \varphi)}{m r \varphi}`
 
 :math:`\eta_{overall} = 1 - \left(\frac{A_{fin}}{A_{total}}\right) (1 - \eta)`
 
@@ -96,60 +96,45 @@ Example
 
 For the instance it is necessary to provide these values:
 
-Fin parameters:
-
-- k=Fin thermal conductivity coefficient [W/m-K]
-- pitch=F_P [m]
-- thickness=F_t δ fin thickness [m]
-- depth= F_d fin depth [m]
-- length= F_l fin length [m]
-
 .. raw:: html
      
-     <img src="./img/LFdF.jpg" alt="Description of the image" width="50%" height="auto">
-     
+     <img src="_static/html/LFRTHEdef2.JPG" alt="Description of the image" width="100%" height="auto">
 
+     <img src="_static/html/LFRTHEdef3.JPG" alt="Description of the image" width="100%" height="auto">
+
+     <img src="_static/html/LFRTHEdef4.JPG" alt="Description of the image" width="100%" height="auto">
+
+Fin parameters:
+
+- D_c: fin collar outside diameter (m)
+- delta_f(=t in graph): fin thickness (m)
+- F_p: fin pitch (m)
+- k_f: thermal conductivity of fin (W/(m*K))
 
 Louver parameters:
 
-- louver_pitch=L_p [m]
-- louver_angle=θ (deg)
-- louver_length=L_l [m]
-
-.. raw:: html
-     
-     <img src="./img/LFL.jpg" alt="Description of the image" width="50%" height="auto">
-
+- L_h: louver height (m)
+- L_p: major louver pitch (m)
 
 Tube parameters:
 
-- tube_depth=T_d [m]
-- tube_pitch=T_p [m]
-- outside_tube_diameter=Dm [m]
-
-
-.. raw:: html
-     
-     <img src="./img/LFL.jpg" alt="Description of the image" width="50%" height="auto">
-
+- P_l: longitudinal tube pitch (m)
+- P_t: transverse tube pitch (m)
 
 Air parameters:
 
-- mu_air= μ air viscosity [kg/m-s]
-- rho_air= ρ air density [kg/m^3]
-- cp_air= gas specific heat [J/kg-K]
-- Pr_air=Prandtl number 
-- air_velocity=fan air speed [m/s]
+- density_air: density of air (kg/m^3)
+- velocity_air: velocity of air (m/s)
+- viscosity_air: viscosity of air (kg/(m*s))
+- Cp_air: specific heat at constant pressure of air (W/(kg*K))
+- Pr_air: Prandtl number of air (dimensionless)
 
 Heat exchanger parameters:
 
-- hx_length= Heat exchanger length, number of fins multiplied by fin pitch [m]
+- HtEx_height: height of heat exchanger (m)
+- HtEx_width: width of heat exchanger (m)
+- N: number of longitudinal tube rows (dimensionless)
 
-.. raw:: html
-
-     
-     <img src="./img/LFd.jpg" alt="Description of the image" width="100%" height="auto">
-     <p><em>Figure 2: Schematic of a Louver fin with a flat tube <a href="https://www.sciencedirect.com/science/article/pii/0017931096001160">Y.J. Chang, C.C. Wang</a></em></p>
 
 -----------------------------------------------------------------     
 
@@ -163,27 +148,26 @@ Data provided by the user:
 
 ::
 
-     from ccwht import LouverFinFlatTube as Lf
-     louver=Lf(
-
-     k=180,
-     pitch=0.0018,
-     thickness=0.00016,
-     depth=0.022,
-     lenght=0.016,
-
-     louver_pitch=0.001318,
-     louver_angle=28,
-     louver_length=0.01244,
-
-     tube_depth=0.022,
-     tube_pitch=0.021,
-     outside_tube_diameter=5e-3,
-
-
-     mu_air=1.825e-5,rho_air=1.204,cp_air=1007,Pr_air=0.731,air_velocity=3,
-
-     hx_lenght=0.018*60,)
+     from cal import LouverFinRoundTube as cal
+     def get_data():
+     return{
+          'D_c':0.01034,
+          'delta_f':0.00012,
+          'F_p':0.0015,
+          'k_f':204,
+          'L_h':0.00107,
+          'L_p':0.002,
+          'P_l':0.022,
+          'P_t':0.0254,
+          'density_air':1.225,
+          'velocity_air':0.0925, 
+          'viscosity_air':1.887*10**(-5),
+          'Cp_air':1007,
+          'Pr_air':0.71,
+          'HtEx_height':0.355,
+          'HtEx_width':0.595,
+          'N':1
+     }
 
 
 Call the function
@@ -191,11 +175,16 @@ Call the function
 
 ::
 
-     J_Colburn_factor = louver.j
-     friction_factor = louver.f
-     heat transfer_coefficient=louver.h_c
-     Pressure_drop=louver.pressure_drop
-     efficiency=louver.eta_overall
+     def main():
+     data = get_data()
+     caldata = cal(**data)
+
+     print("Re_DC:", caldata.Re_DC)
+     print("Fanning friction factor:", caldata.f)
+     print("Colburn j-factor:", caldata.j)
+     print("Pressure drop:", caldata.delta_P)
+     print("Heat transfer coefficient h_o:", caldata.h_air)
+     print("efficiency:", caldata.eta_o)
 
 Output
 -------
@@ -205,11 +194,12 @@ Results obtained from the calculations:
 ::
 
      #Results
-     J_Colburn_factor = 0.0259
-     friction_factor = 0.147
-     heat transfer_coefficient=129.0434
-     Pressure_drop=29.0999
-     efficiency=0.619
+     Re_DC: 100.05202671182407
+     Fanning friction factor: 1.6476016678787477
+     Colburn j-factor: 0.05148511118448749
+     Pressure drop: 0.9557613545778805
+     Heat transfer coefficient h_o: 11.894590038782678
+     efficiency: 0.9655369378815283
 
 -----------------------------------------------------------------
 
@@ -221,22 +211,11 @@ The following graphs show the variation of the  friction factor, J Colburn facto
 
 .. raw:: html
      
-     <iframe src="./graph/fp_re_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Friction coefficient against Reynolds number &le; 150 and fin pitch </em></p>
-     <iframe src="./graph/fp_re_f2.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Friction coefficient against Reynolds number &gt; 150 and fin pitch </em></p>
-     <iframe src="./graph/la_re_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Friction coefficient against Reynolds number &le; 150 and louver angle </em></p>
-     <iframe src="./graph/la_re_f2.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Friction coefficient against Reynolds number &gt; 150 and louver angle </em></p>
-     <iframe src="./graph/fp_re_pd.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Pressure drop against Reynolds number &le; 150 and fin pitch </em></p>
-     <iframe src="./graph/fp_re_pd2.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Pressure drop against Reynolds number &gt; 150 and fin pitch </em></p>
-     <iframe src="./graph/fp_re_h.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Heat transfer coefficient against Reynolds number &le; 150 and fin pitch </em></p>
-     <iframe src="./graph/fp_re_h2.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <p><em>Heat transfer coefficient against Reynolds number &gt; 150 and fin pitch </em></p>
+     <iframe src="_static/graph/plot_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+
 
 .. footer:: &copy; 2024 CC Wang Lab.
 

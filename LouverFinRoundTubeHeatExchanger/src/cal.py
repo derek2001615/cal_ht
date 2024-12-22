@@ -231,7 +231,7 @@ class LouverFinRoundTube:
         self.delta_P = self.density_air \
             * self.f \
             * self.A_o / self.A_c \
-            * 0.5 * (self.velocity_air / self.sigma)
+            * 0.5 * (self.velocity_air / self.sigma) ** 2 
         
     def calc_heat_transfer_coefficient(self):
         self.h_air = self.j \
