@@ -51,6 +51,7 @@
 <section id="j-colburn-factor">
 <h2>J Colburn factor<a class="headerlink" href="#j-colburn-factor" title="Link to this heading">¶</a></h2>
 <p>The J-factor provides a way to relate heat, mass, and momentum transfer processes. This allows to estimate one transfer coefficient.</p>
+<p>J1~J8 are parameters calculated by other parameters below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
 j = \begin{cases}
@@ -66,6 +67,7 @@ j = \begin{cases}
 <section id="f-friction-factor">
 <h2>F friction factor<a class="headerlink" href="#f-friction-factor" title="Link to this heading">¶</a></h2>
 <p>The friction factor in heat exchanger fins is a dimensionless parameter that quantifies the resistance to fluid flow through the finned passages.</p>
+<p>F1~F9 are parameters calculated by other parameters below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
 f = \begin{cases}
@@ -93,7 +95,7 @@ f = \begin{cases}
 <section id="fin-and-tube-louver-surface-efficiency">
 <h2>Fin-and-tube louver surface efficiency<a class="headerlink" href="#fin-and-tube-louver-surface-efficiency" title="Link to this heading">¶</a></h2>
 <p>Measure of how effectively a louver system can transfer heat between two fluids.</p>
-<p><span class="math notranslate nohighlight">\(m = \sqrt{\frac{2 h_air}{k \delta}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(m = \sqrt{\frac{2 h_{air}}{k \delta}}\)</span></p>
 <p><span class="math notranslate nohighlight">\(\eta = \frac{\tanh(m r \varphi)}{m r \varphi}\)</span></p>
 <p><span class="math notranslate nohighlight">\(\eta_{overall} = 1 - \left(\frac{A_{fin}}{A_{total}}\right) (1 - \eta)\)</span></p>
 </section>
@@ -177,7 +179,7 @@ f = \begin{cases}
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fanning friction factor:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Colburn j-factor:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">j</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pressure drop:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">delta_P</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Heat transfer coefficient h_o:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">h_air</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Heat transfer coefficient h_air:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">h_air</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;efficiency:&quot;</span><span class="p">,</span> <span class="n">caldata</span><span class="o">.</span><span class="n">eta_o</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -190,7 +192,7 @@ f = \begin{cases}
 <span class="n">Fanning</span> <span class="n">friction</span> <span class="n">factor</span><span class="p">:</span> <span class="mf">1.6476016678787477</span>
 <span class="n">Colburn</span> <span class="n">j</span><span class="o">-</span><span class="n">factor</span><span class="p">:</span> <span class="mf">0.05148511118448749</span>
 <span class="n">Pressure</span> <span class="n">drop</span><span class="p">:</span> <span class="mf">0.9557613545778805</span>
-<span class="n">Heat</span> <span class="n">transfer</span> <span class="n">coefficient</span> <span class="n">h_o</span><span class="p">:</span> <span class="mf">11.894590038782678</span>
+<span class="n">Heat</span> <span class="n">transfer</span> <span class="n">coefficient</span> <span class="n">h_air</span><span class="p">:</span> <span class="mf">11.894590038782678</span>
 <span class="n">efficiency</span><span class="p">:</span> <span class="mf">0.9655369378815283</span>
 </pre></div>
 </div>
@@ -199,10 +201,10 @@ f = \begin{cases}
 <section id="graphs">
 <h2>Graphs<a class="headerlink" href="#graphs" title="Link to this heading">¶</a></h2>
 <p>The following graphs show the variation of the  friction factor, J Colburn factor, pressure drop, and heat transfer coefficient respect to Reynolds number and other parameters.</p>
-<iframe src="_static/graph/plot_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-<iframe src="_static/graph/plot_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-<iframe src="_static/graph/plot_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-<iframe src="_static/graph/plot_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe></section>
+<iframe src="_static/graph/plot_F_p_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_F_p_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_F_p_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+<iframe src="_static/graph/plot_F_p_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe></section>
 </section>
 
 

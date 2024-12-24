@@ -29,7 +29,7 @@ def main():
     print("Fanning friction factor:", caldata.f)
     print("Colburn j-factor:", caldata.j)
     print("Pressure drop:", caldata.delta_P)
-    print("Heat transfer coefficient h_o:", caldata.h_air)
+    print("Heat transfer coefficient h_air:", caldata.h_air)
     print("efficiency:", caldata.eta_o)
 
 if __name__ == '__main__':

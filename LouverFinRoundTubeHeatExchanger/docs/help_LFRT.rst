@@ -26,7 +26,9 @@ Correlations
 J Colburn factor
 -----------------
 
-The J-factor provides a way to relate heat, mass, and momentum transfer processes. This allows to estimate one transfer coefficient. 
+The J-factor provides a way to relate heat, mass, and momentum transfer processes. This allows to estimate one transfer coefficient.
+
+J1~J8 are parameters calculated by other parameters below.
 
 .. math::
 
@@ -44,8 +46,9 @@ The J-factor provides a way to relate heat, mass, and momentum transfer processe
 F friction factor
 -----------------
 
-The friction factor in heat exchanger fins is a dimensionless parameter that quantifies the resistance to fluid flow through the finned passages. 
+The friction factor in heat exchanger fins is a dimensionless parameter that quantifies the resistance to fluid flow through the finned passages.
 
+F1~F9 are parameters calculated by other parameters below.
 
 .. math::
 
@@ -83,7 +86,7 @@ Fin-and-tube louver surface efficiency
   
 Measure of how effectively a louver system can transfer heat between two fluids.
 
-:math:`m = \sqrt{\frac{2 h_air}{k \delta}}`
+:math:`m = \sqrt{\frac{2 h_{air}}{k \delta}}`
         
 :math:`\eta = \frac{\tanh(m r \varphi)}{m r \varphi}`
 
@@ -183,7 +186,7 @@ Call the function
      print("Fanning friction factor:", caldata.f)
      print("Colburn j-factor:", caldata.j)
      print("Pressure drop:", caldata.delta_P)
-     print("Heat transfer coefficient h_o:", caldata.h_air)
+     print("Heat transfer coefficient h_air:", caldata.h_air)
      print("efficiency:", caldata.eta_o)
 
 Output
@@ -198,7 +201,7 @@ Results obtained from the calculations:
      Fanning friction factor: 1.6476016678787477
      Colburn j-factor: 0.05148511118448749
      Pressure drop: 0.9557613545778805
-     Heat transfer coefficient h_o: 11.894590038782678
+     Heat transfer coefficient h_air: 11.894590038782678
      efficiency: 0.9655369378815283
 
 -----------------------------------------------------------------
@@ -211,10 +214,10 @@ The following graphs show the variation of the  friction factor, J Colburn facto
 
 .. raw:: html
      
-     <iframe src="_static/graph/plot_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <iframe src="_static/graph/plot_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <iframe src="_static/graph/plot_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
-     <iframe src="_static/graph/plot_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_F_p_f.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_F_p_j.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_F_p_delta_P.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
+     <iframe src="_static/graph/plot_F_p_h_air.html" frameborder="0" scrolling="0" width="1000" height="700"></iframe>
 
 
 .. footer:: &copy; 2024 CC Wang Lab.
