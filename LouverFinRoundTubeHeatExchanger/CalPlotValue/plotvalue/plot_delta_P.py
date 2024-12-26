@@ -29,6 +29,6 @@ fig1.add_trace(go.Scatter(x=Re_DC_values, y=P3_values, mode='lines+markers', nam
 fig1.update_layout(title="pressure drop vs Re_DC under different F_p ", xaxis_title="Re_DC", yaxis_title="pressure drop", template="plotly_dark")
 
 fig1.show()
-fig1.write_html("plot_delta_P.html")
+fig1.write_html("plot_F_p_delta_P.html")
 
 
